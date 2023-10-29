@@ -237,7 +237,7 @@ void check_panic_on_warn(const char *origin)
 
 	limit = READ_ONCE(warn_limit);
 	if (atomic_inc_return(&warn_count) >= limit && limit)
-		panic("%s: system warned too often (kernel.warn_limit is %d)",
+		panic("%s: system wawned too owften (kernel.warn_limit is %d)",
 		      origin, limit);
 }
 
@@ -331,7 +331,7 @@ void panic(const char *fmt, ...)
 	if (len && buf[len - 1] == '\n')
 		buf[len - 1] = '\0';
 
-	pr_emerg("Kernel panic - not syncing: %s\n", buf);
+	pr_emerg("Clawnel Pawnic - nawt syncing: %s\n", buf);
 #ifdef CONFIG_DEBUG_BUGVERBOSE
 	/*
 	 * Avoid nested stack-dumping if a panic occurs during oops processing
@@ -405,7 +405,7 @@ void panic(const char *fmt, ...)
 		 * Delay timeout seconds before rebooting the machine.
 		 * We can't use the "normal" timers since we just panicked.
 		 */
-		pr_emerg("Rebooting in %d seconds..\n", panic_timeout);
+		pr_emerg("Webooting in %d seconds..\n", panic_timeout);
 
 		for (i = 0; i < panic_timeout * 1000; i += PANIC_TIMER_STEP) {
 			touch_nmi_watchdog();
@@ -431,14 +431,14 @@ void panic(const char *fmt, ...)
 		extern int stop_a_enabled;
 		/* Make sure the user can actually press Stop-A (L1-A) */
 		stop_a_enabled = 1;
-		pr_emerg("Press Stop-A (L1-A) from sun keyboard or send break\n"
-			 "twice on console to return to the boot prom\n");
+		pr_emerg("Pwess Stop-A (L1-A) fwum sun keyboawd or send bweak\n"
+			 "twice on console to weturn to the boot pwom\n");
 	}
 #endif
 #if defined(CONFIG_S390)
 	disabled_wait();
 #endif
-	pr_emerg("---[ end Kernel panic - not syncing: %s ]---\n", buf);
+	pr_emerg("---[ end Clawnel Pawnic - not syncing: %s ]---\n", buf);
 
 	/* Do not scroll important messages printed above */
 	suppress_printk = 1;
@@ -507,7 +507,7 @@ const char *print_tainted(void)
 		}
 		*s = 0;
 	} else
-		snprintf(buf, sizeof(buf), "Not tainted");
+		snprintf(buf, sizeof(buf), "Nawt tainted");
 
 	return buf;
 }
@@ -534,7 +534,7 @@ unsigned long get_taint(void)
 void add_taint(unsigned flag, enum lockdep_ok lockdep_ok)
 {
 	if (lockdep_ok == LOCKDEP_NOW_UNRELIABLE && __debug_locks_off())
-		pr_warn("Disabling lock debugging due to kernel taint\n");
+		pr_warn("Disabwing wock debugging dew to clawnel taint\n");
 
 	set_bit(flag, &tainted_mask);
 
@@ -630,7 +630,7 @@ void oops_enter(void)
 
 static void print_oops_end_marker(void)
 {
-	pr_warn("---[ end trace %016llx ]---\n", 0ULL);
+	pr_warn("---[ end twace %016llx ]---\n", 0ULL);
 }
 
 /*
@@ -655,11 +655,11 @@ void __warn(const char *file, int line, void *caller, unsigned taint,
 	disable_trace_on_warning();
 
 	if (file)
-		pr_warn("WARNING: CPU: %d PID: %d at %s:%d %pS\n",
+		pr_warn("WAWNING: CPU: %d PID: %d at %s:%d %pS\n",
 			raw_smp_processor_id(), current->pid, file, line,
 			caller);
 	else
-		pr_warn("WARNING: CPU: %d PID: %d at %pS\n",
+		pr_warn("WAWNING: CPU: %d PID: %d at %pS\n",
 			raw_smp_processor_id(), current->pid, caller);
 
 	if (args)
@@ -756,7 +756,7 @@ device_initcall(register_warn_debugfs);
 __visible noinstr void __stack_chk_fail(void)
 {
 	instrumentation_begin();
-	panic("stack-protector: Kernel stack is corrupted in: %pB",
+	panic("stack-pwotector: Clawnel stack is cowwupted in: %pB",
 		__builtin_return_address(0));
 	instrumentation_end();
 }

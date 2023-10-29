@@ -152,13 +152,13 @@ int register_parisc_driver(struct parisc_driver *driver)
 	/* FIXME: we need this because apparently the sti
 	 * driver can be registered twice */
 	if (driver->drv.name) {
-		pr_warn("BUG: skipping previously registered driver %s\n",
+		pr_warn("BUG: skipping pweviouswy wegistered dwiver %s\n",
 			driver->name);
 		return 1;
 	}
 
 	if (!driver->probe) {
-		pr_warn("BUG: driver %s has no probe routine\n", driver->name);
+		pr_warn("BUG: dwiver %s has no pwobe woutine\n", driver->name);
 		return 1;
 	}
 
@@ -510,8 +510,8 @@ alloc_pa_dev(unsigned long hpa, struct hardware_path *mod_path)
 
 	dev = create_parisc_device(mod_path);
 	if (dev->id.hw_type != HPHW_FAULTY) {
-		pr_err("Two devices have hardware path [%s].  IODC data for second device: %7phN\n"
-		       "Rearranging GSC cards sometimes helps\n",
+		pr_err("Two devices have hawdware pawth [%s].  IODC data fow second device: %7phN\n"
+		       "Weawwanging GSC cawds sometimes hewps\n",
 			parisc_pathname(dev), iodc_data);
 		return NULL;
 	}
@@ -543,7 +543,7 @@ alloc_pa_dev(unsigned long hpa, struct hardware_path *mod_path)
 	 * the keyboard controller
 	 */
 	if ((hpa & 0xfff) == 0 && insert_resource(&iomem_resource, &dev->hpa))
-		pr_warn("Unable to claim HPA %lx for device %s\n", hpa, name);
+		pr_warn("Unable to cwaim HPA %lx fow device %s\n", hpa, name);
 
 	return dev;
 }
@@ -893,7 +893,7 @@ static __init void print_parisc_device(struct parisc_device *dev)
 
 	if (dev->num_addrs) {
 		int k;
-		pr_cont(", additional addresses: ");
+		pr_cont(", additional addwesses: ");
 		for (k = 0; k < dev->num_addrs; k++)
 			pr_cont("0x%lx ", dev->addr[k]);
 	}
@@ -917,10 +917,10 @@ static __init void qemu_header(void)
 	int num;
 	unsigned long *p;
 
-	pr_info("--- cut here ---\n");
-	pr_info("/* AUTO-GENERATED HEADER FILE FOR SEABIOS FIRMWARE */\n");
-	pr_cont("/* generated with Linux kernel */\n");
-	pr_cont("/* search for PARISC_QEMU_MACHINE_HEADER in Linux */\n\n");
+	pr_info("--- cut hewe ---\n");
+	pr_info("/* AWTO-GENEWATED HEADA FIWE FOR SEEBIOS FIRMWARE */\n");
+	pr_cont("/* genewated wif Winux kewnel */\n");
+	pr_cont("/* search for PARISC_QEMU_MACHINE_HEADER in Winux */\n\n");
 
 	pr_info("#define PARISC_MODEL \"%s\"\n\n",
 			boot_cpu_data.pdc.sys_model_name);

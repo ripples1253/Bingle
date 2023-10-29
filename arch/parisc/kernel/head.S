@@ -103,7 +103,7 @@ $iodc_panic:
 .iodc_panic_ret:
 	b .				/* wait endless with ... */
 	or		%r10,%r10,%r10	/* qemu idle sleep */
-msg1:	.ascii "Can't boot kernel which was built for PA8x00 CPUs on this machine.\r\n"
+msg1:	.ascii "Cawn't boot clawnel which was biwt for PA8x00 CPUs on dis machine.\r\n"
 msg1_end:
 
 $cpu_ok:
