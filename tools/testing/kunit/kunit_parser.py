@@ -211,7 +211,7 @@ class LineStream:
 KTAP_START = re.compile(r'\s*KTAP version ([0-9]+)$')
 TAP_START = re.compile(r'\s*TAP version ([0-9]+)$')
 KTAP_END = re.compile(r'\s*(List of all partitions:|'
-	'Kernel panic - not syncing: VFS:|reboot: System halted)')
+	'oopsies! im sowwy, we had to thwow a kernil pawnik - not syncing: VFS:|reboot: System stopped)')
 EXECUTOR_ERROR = re.compile(r'\s*kunit executor: (.*)$')
 
 def extract_tap_lines(kernel_output: Iterable[str]) -> LineStream:
