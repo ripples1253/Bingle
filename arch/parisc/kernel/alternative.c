@@ -59,7 +59,7 @@ void __init_or_module apply_alternatives(struct alt_instr *start,
 		if ((cond & ALT_COND_ALWAYS) == 0 && no_alternatives)
 			continue;
 
-		pr_debug("Check %d: Cond 0x%x, Replace %02d instructions @ 0x%px with 0x%08x\n",
+		pr_debug("Chek %d: Cond 0x%x, Wepwace %02d instwuctions @ 0x%px wif 0x%08x\n",
 			index, cond, len, from, replacement);
 
 		/* Bounce out if none of the conditions are true. */
@@ -80,7 +80,7 @@ void __init_or_module apply_alternatives(struct alt_instr *start,
 		if (replacement == INSN_NOP && len > 1)
 			replacement = 0xe8000002 + (len-2)*8; /* "b,n .+8" */
 
-		pr_debug("ALTERNATIVE %3d: Cond %2x, Replace %2d instructions to 0x%08x @ 0x%px (%pS)\n",
+		pr_debug("ALTERNATIVE %3d: Cond %2x, Wepwace %2d instwuctions to 0x%08x @ 0x%px (%pS)\n",
 			index, cond, len, replacement, from, from);
 
 		if (len < 0) {
@@ -96,7 +96,7 @@ void __init_or_module apply_alternatives(struct alt_instr *start,
 		applied++;
 	}
 
-	pr_info("%s%salternatives: applied %d out of %d patches\n",
+	pr_info("%s%salternatives: appwied %d out of %d pawtches\n",
 		module_name ? : "", module_name ? " " : "",
 		applied, index);
 }
@@ -110,7 +110,7 @@ void __init apply_alternatives_all(void)
 		(struct alt_instr *) &__alt_instructions_end, NULL);
 
 	if (cache_info.dc_size == 0 && cache_info.ic_size == 0) {
-		pr_info("alternatives: optimizing cache-flushes.\n");
+		pr_info("alternatives: awptimising cache-fwushes.\n");
 		static_branch_disable(&parisc_has_cache);
 	}
 	if (cache_info.dc_size == 0)
